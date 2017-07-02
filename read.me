@@ -1,0 +1,13 @@
+A simple possible approach.
+
+CampaignManager.main to run
+
+CampaignManager(fileName) gets the campaign file to load.
+
+In case of preventing starve, 
+CampaignManager(fileName, int preventStarve) can be used, wherein default = 1, but can be given more than 1, thus then from found matching segments, from highest match towards lowest can return with multiple campaign names.
+
+CampaignManager.loadCampaignData runs with constructor, loads Campaign objects.
+
+CampaignManager.evaluateCampaign(String input) parses campaign name and given segment numbers.
+Simply running through campaigns and finding their match with given set of segment numbers with Campaign.checkSegments. This results in a map, which then will be sorted and eventually filtered to see the given(default 1) campaign(s) of the highest match as result.
