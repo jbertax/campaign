@@ -1,15 +1,15 @@
 package campaign;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Campaign {
     private String name;
-    private List<Integer> segments = new ArrayList<>();
+    private List segments = new CopyOnWriteArrayList<>();
 
     /**
      * Digests String data of campaign
@@ -30,8 +30,8 @@ public class Campaign {
      * @param segments The Integer set of segments to check
      * @return How many of the given segments this campaign has
      */
-    public int checkSegments(Set<Integer> segments) {
-        Predicate<Integer> predicate = s -> segments.contains(s);
+    protected int checkSegments(Set<Integer> segments) {
+        Predicate<Integer> predicate = segments::contains;
         long found = this.segments.stream().filter(predicate).count();
         return (int) found;
     }
